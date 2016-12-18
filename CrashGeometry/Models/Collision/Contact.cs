@@ -9,6 +9,7 @@ namespace CrashGeometry.Models.Collision
 {
 	public class Contact
 	{
+		public bool IsCollision { get; set; }
 		public Dot Position { get; set; }
 		public Model Model1 { get; set; }
 		public Model Model2 { get; set; }
@@ -17,6 +18,11 @@ namespace CrashGeometry.Models.Collision
 			this.Position = position;
 			this.Model1 = m1;
 			this.Model2 = m2;
+			this.IsCollision = true;
+		}
+		public Contact()
+		{
+			this.IsCollision = false;
 		}
 	}
 }
