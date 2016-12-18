@@ -9,6 +9,7 @@ namespace CrashGeometry.Views
 {
 	public class Text : View
 	{
+		protected new List<Action<View>> Clicks;
 		public string Value { get; set; }
 		public Color Color { get; set; }
 		public System.Drawing.Font Font { get; set; }
