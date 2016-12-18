@@ -38,6 +38,11 @@ namespace CrashGeometry.Screens
 				Console.WriteLine("Click on polygon");
 			});
 			AddView(poly);
+
+			AddView(Circle.Create(400, 100, 30, Color.White).AddListenerClick(view =>
+			{
+				Console.WriteLine("Click on circle");
+			}));
 		}
 		public override void Render()
 		{
@@ -47,6 +52,7 @@ namespace CrashGeometry.Screens
 		}
 		public override void Dispose()
 		{
+			base.Dispose();
 		}
 	}
 }
