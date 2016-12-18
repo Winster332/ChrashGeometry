@@ -39,12 +39,13 @@ namespace CrashGeometry.Models
 		{
 			pen.Dispose();
 		}
-		public static Polygon Create(Dot[] points, TypeDrawing typeDrawing, System.Drawing.Color color)
+		public static Polygon Create(Dot[] points, TypeDrawing typeDrawing, System.Drawing.Color color, int sizeLine = 1)
 		{
 			Polygon poly = new Polygon();
 			poly.Verteces = points;
 			poly.TypeDrawing = typeDrawing;
 			poly.Color = color;
+			poly.SizeLine = sizeLine;
 
 			return poly;
 		}

@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameEngine\Assets.cs" />
     <Compile Include="GameEngine\PoolMouse.cs" />
     <Compile Include="GameEngine\PoolKeyboard.cs" />
     <Compile Include="MainForm.cs">
