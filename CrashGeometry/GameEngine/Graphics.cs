@@ -31,8 +31,9 @@ namespace CrashGeometry.GameEngine
 		{
 			pBox.Image = image;
 		}
-		public void Get()
+		public System.Drawing.Graphics Get()
 		{
+			return graphics;
 		}
 		public System.Windows.Forms.PictureBox GetPicture()
 		{

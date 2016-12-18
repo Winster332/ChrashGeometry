@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CrashGeometry.GameEngine;
+using CrashGeometry.Views;
 using Color = System.Drawing.Color;
 
 namespace CrashGeometry.Screens
@@ -12,13 +13,18 @@ namespace CrashGeometry.Screens
 	{
 		public override void Create()
 		{
+			Button button = new Button();
+			button.Position = new LMDMono2D.Dot(Game.GetForm().Width / 2, Game.GetForm().Height / 2);
+			button.AddListenerClick((view)=>
+			{
+				Console.WriteLine("Click");
+			});
+			AddView(button);
 		}
 		public override void Render()
 		{
-			base.Render();
-
 			Game.Graphics.Begin(Color.FromArgb(50, 50, 50));
-
+			base.Render();
 			Game.Graphics.End();
 		}
 		public override void Dispose()

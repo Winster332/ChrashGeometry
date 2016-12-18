@@ -12,6 +12,11 @@ namespace CrashGeometry.Views
 	public abstract class View : IDisposable
 	{
 		protected Game Game { get; set; }
+		protected List<Action<View>> Clicks;
+		public void AddListenerClick(Action<View> eventClick)
+		{
+			this.Clicks.Add(eventClick);
+		}
 		public float X
 		{
 			get
@@ -35,6 +40,11 @@ namespace CrashGeometry.Views
 			}
 		}
 		public Dot Position { get; set; }
+		public View()
+		{
+			Position = new Dot(0, 0);
+			Clicks = new List<Action<View>>();
+		}
 		public void Initialize(Game game)
 		{
 			this.Game = game;
