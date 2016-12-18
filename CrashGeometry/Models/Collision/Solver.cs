@@ -53,7 +53,40 @@ namespace CrashGeometry.Models.Collision
 		{
 			Contact contact = new Contact();
 
+			for (int i = 0; i < m1.Verteces.Length; i++)
+			{
+				Dot point = m1.Verteces[i];
+
+				if (DotMath.IsDotInPolygon(m2.Verteces, point))
+				{
+					Dot positionContact = GetPositionContact(point, m2);
+
+					contact.IsCollision = true;
+					contact.Model1 = m1;
+					contact.Model2 = m2;
+					contact.Position = positionContact;
+				}
+			}
+
 			return contact;
+		}
+
+		public static Dot GetPositionContact(Dot point, Polygon m2)
+		{
+			Dot position = new Dot(0, 0);
+			Dot centerModel2 = DotMath.PolygonCenter(m2.Verteces);
+
+			for (int i = 0, j = 1; i < m2.Verteces.Length; j=i++)
+			{
+				Dot A = m2.Verteces[i];
+				Dot B = m2.Verteces[j];
+
+				Dot contact = DotMath.StraightsIntersect(A, B, point, centerModel2);
+				if (contact != null)
+					position = contact;
+			}
+
+			return position;
 		}
 	}
 }
