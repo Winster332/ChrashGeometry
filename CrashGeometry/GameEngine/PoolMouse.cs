@@ -19,9 +19,9 @@ namespace CrashGeometry.GameEngine
 			Moves = new List<System.Drawing.PointF>();
 
 			SetMaxPool(5);
-			//AddDown(0, 0);
-			//AddMove(0, 0);
-			//AddUp(0, 0);
+			AddDown(-10, 0);
+			AddMove(-10, 0);
+			AddUp(-10, 0);
 		}
 		public void Clear()
 		{
@@ -39,12 +39,14 @@ namespace CrashGeometry.GameEngine
 		}
 		public void AddDown(float x, float y)
 		{
+			Ups.Clear();
 			if (Downs.Count > GetMaxPool())
 				Downs.RemoveAt(0);
 			Downs.Add(new System.Drawing.PointF(x, y));
 		}
 		public void AddUp(float x, float y)
 		{
+			Downs.Clear();
 			if (Ups.Count > GetMaxPool())
 				Ups.RemoveAt(0);
 			Ups.Add(new System.Drawing.PointF(x, y));
