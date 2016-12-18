@@ -11,8 +11,7 @@ namespace CrashGeometry.Views
 	{
 		public float Width { get; set; }
 		public float Height { get; set; }
-		public string Text { get; set; }
-		public System.Drawing.Font Font { get; set; }
+		public Text Text { get; set; }
 		public Color ColorDown { get; set; }
 		public Color ColorMove { get; set; }
 		public Color Background { get; set; }
@@ -24,8 +23,7 @@ namespace CrashGeometry.Views
 			Y = 0;
 			Width = 80;
 			Height = 25;
-			Text = "Button";
-			Font = new System.Drawing.Font("Arial", 11);
+			
 			Background = Color.FromArgb(60, 140, 210);
 			Foreground = Color.FromArgb(255, 255, 255);
 			ColorDown = Color.FromArgb(40, 120, 190);
@@ -64,11 +62,13 @@ namespace CrashGeometry.Views
 			{
 			}
 
-			Game.Graphics.Get().DrawString(Text, Font, new System.Drawing.SolidBrush(Foreground), X, Y, StringFormat);
+			Text.X = X;
+			Text.Y = Y;
+			Text.Draw();
 		}
 		public override void Dispose()
 		{
-			Font.Dispose();
+			Text.Dispose();
 		}
 		public static Button Create(string text, float x, float y, float width, float height, Color background, Color foreground, System.Drawing.Font font)
 		{
@@ -79,9 +79,16 @@ namespace CrashGeometry.Views
 			button.Height = height;
 			button.Background = background;
 			button.Foreground = foreground;
-			button.Font = font;
+			button.Text.Value = text;
+			button.Text.Font = font;
 
 			return button;
+		}
+
+		protected override void Loaded()
+		{
+			Text = Text.Create("Button", X, Y, new System.Drawing.Font("Arial", 11), Color.White);
+			Text.Initialize(Game);
 		}
 	}
 }

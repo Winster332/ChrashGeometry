@@ -52,7 +52,9 @@ namespace CrashGeometry.Views
 		public void Initialize(Game game)
 		{
 			this.Game = game;
+			Loaded();
 		}
+		protected abstract void Loaded();
 		public abstract void Draw();
 		public abstract void Dispose();
 	}

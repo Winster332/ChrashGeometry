@@ -32,5 +32,17 @@ namespace CrashGeometry.Views
 		{
 			Font.Dispose();
 		}
+		public static Text Create(String text, float x, float y, System.Drawing.Font font, Color color)
+		{
+			Text t = new Text();
+			t.Color = color;
+			t.Position = new LMDMono2D.Dot(x, y);
+			t.Font = font;
+
+			return t;
+		}
+		protected override void Loaded()
+		{
+		}
 	}
 }
