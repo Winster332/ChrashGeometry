@@ -20,6 +20,7 @@ namespace CrashGeometry.GameEngine
 
 			this.image = new System.Drawing.Bitmap(pBox.Width, pBox.Height);
 			this.graphics = System.Drawing.Graphics.FromImage(image);
+			this.graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 			form.Controls.Add(pBox);
 		}
 		public void Begin(System.Drawing.Color color)

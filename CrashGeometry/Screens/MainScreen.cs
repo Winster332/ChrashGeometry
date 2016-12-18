@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CrashGeometry.GameEngine;
+using Color = System.Drawing.Color;
 
 namespace CrashGeometry.Screens
 {
@@ -14,6 +15,11 @@ namespace CrashGeometry.Screens
 		}
 		public override void Render()
 		{
+			base.Render();
+
+			Game.Graphics.Begin(Color.FromArgb(50, 50, 50));
+
+			Game.Graphics.End();
 		}
 		public override void Dispose()
 		{
