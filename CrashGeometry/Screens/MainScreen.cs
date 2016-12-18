@@ -20,6 +20,11 @@ namespace CrashGeometry.Screens
 				Console.WriteLine("Click");
 			});
 			AddView(button);
+
+			Text text = new Text();
+			text.Position = new LMDMono2D.Dot(100, 100);
+			AddView(text);
+
 		}
 		public override void Render()
 		{

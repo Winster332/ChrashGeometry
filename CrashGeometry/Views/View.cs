@@ -17,6 +17,10 @@ namespace CrashGeometry.Views
 		{
 			this.Clicks.Add(eventClick);
 		}
+		public void RemoveListenerClick(int index)
+		{
+			this.Clicks.RemoveAt(index);
+		}
 		public float X
 		{
 			get
