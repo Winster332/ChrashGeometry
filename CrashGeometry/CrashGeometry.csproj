@@ -63,6 +63,8 @@
     <Compile Include="GameEngine\Graphics.cs" />
     <Compile Include="GameEngine\Input.cs" />
     <Compile Include="Models\Model.cs" />
+    <Compile Include="Models\Polygon.cs" />
+    <Compile Include="Models\TypeDrawing.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screens\MainScreen.cs" />

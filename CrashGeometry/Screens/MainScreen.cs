@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CrashGeometry.GameEngine;
 using CrashGeometry.Views;
 using Color = System.Drawing.Color;
+using CrashGeometry.Models;
 
 namespace CrashGeometry.Screens
 {
@@ -15,9 +16,9 @@ namespace CrashGeometry.Screens
 		{
 			Button button = new Button();
 			button.Position = new LMDMono2D.Dot(Game.GetForm().Width / 2, Game.GetForm().Height / 2);
-			button.AddListenerClick((view)=>
+			button.AddListenerClick(view =>
 			{
-				Console.WriteLine("Click");
+				Console.WriteLine("Click on button");
 			});
 			AddView(button);
 
@@ -25,6 +26,18 @@ namespace CrashGeometry.Screens
 			text.Position = new LMDMono2D.Dot(100, 100);
 			AddView(text);
 
+			Polygon poly = Polygon.Create(new LMDMono2D.Dot[]
+				{
+					new LMDMono2D.Dot(100, 100),
+					new LMDMono2D.Dot(200, 100),
+					new LMDMono2D.Dot(200, 200),
+					new LMDMono2D.Dot(100, 200)
+				}, TypeDrawing.Fills, Color.White);
+			poly.AddListenerClick(view => 
+			{
+				Console.WriteLine("Click on polygon");
+			});
+			AddView(poly);
 		}
 		public override void Render()
 		{

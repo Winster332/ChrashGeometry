@@ -10,9 +10,18 @@ namespace CrashGeometry.Models
 	public abstract class Model : Views.View
 	{
 		private new Dot Position;
-		private Dot[] Verteces;
-		protected new List<Action<Views.View>> Clicks;
-
+		private new float X;
+		private new float Y;
+		public TypeDrawing TypeDrawing { get; set; }
+		public System.Drawing.Color Color { get; set; }
+		public Dot[] Verteces { get; set; }
+		public int SizeLine { get; set; }
+		public Model()
+		{
+			TypeDrawing = TypeDrawing.Fills;
+			Color = System.Drawing.Color.White;
+			SizeLine = 1;
+		}
 		protected abstract override void Loaded();
 		public abstract override void Draw();
 		public abstract override void Dispose();
