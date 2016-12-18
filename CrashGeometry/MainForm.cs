@@ -28,9 +28,8 @@ namespace CrashGeometry
 
 		private void Timer_Tick(object sender, EventArgs e)
 		{
-			
-			if (game.Input.PoolMouse.Downs.Count > 0)
-				Console.WriteLine("" + game.Input.PoolMouse.GetLastDown());
+			if (game.Input.PoolKeyboard.Downs.Count > 0)
+				Console.WriteLine("" + game.Input.PoolKeyboard.GetDown(Keys.A));
 			game.Update();
 		}
 

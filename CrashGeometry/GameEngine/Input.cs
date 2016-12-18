@@ -26,13 +26,16 @@ namespace CrashGeometry.GameEngine
 		}
 		public void Update()
 		{
-			PoolMouse.ClearMouse();
+			PoolMouse.Clear();
+			PoolKeyboard.Clear();
 		}
 		private void Input_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
 		{
+			PoolKeyboard.AddUp(e.KeyCode);
 		}
 		private void Input_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
 		{
+			PoolKeyboard.AddDown(e.KeyCode);
 		}
 		private void Input_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
 		{

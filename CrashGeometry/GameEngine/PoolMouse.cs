@@ -23,7 +23,7 @@ namespace CrashGeometry.GameEngine
 			//AddMove(0, 0);
 			//AddUp(0, 0);
 		}
-		public void ClearMouse()
+		public void Clear()
 		{
 			Downs.Clear();
 			Ups.Clear();
