@@ -20,6 +20,7 @@ namespace CrashGeometry.GameEngine
 
 			this.image = new System.Drawing.Bitmap(pBox.Width, pBox.Height);
 			this.graphics = System.Drawing.Graphics.FromImage(image);
+			form.Controls.Add(pBox);
 		}
 		public void Begin(System.Drawing.Color color)
 		{
@@ -31,6 +32,10 @@ namespace CrashGeometry.GameEngine
 		}
 		public void Get()
 		{
+		}
+		public System.Windows.Forms.PictureBox GetPicture()
+		{
+			return pBox;
 		}
 	}
 }
