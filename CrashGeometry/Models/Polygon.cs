@@ -39,9 +39,15 @@ namespace CrashGeometry.Models
 		{
 			pen.Dispose();
 		}
-		public static Polygon Create(Dot[] points, TypeDrawing typeDrawing, System.Drawing.Color color, int sizeLine = 1)
+		public static Polygon Create(GameEngine.Game game, Dot[] points, TypeDrawing typeDrawing, System.Drawing.Color color, int sizeLine = 1)
 		{
+			for (int i = 0; i < points.Length; i++)
+			{
+				points[i].X += game.Graphics.Camera.X;
+				points[i].Y += game.Graphics.Camera.Y;
+			}
 			Polygon poly = new Polygon();
+			poly.Initialize(game);
 			poly.Verteces = points;
 			poly.TypeDrawing = typeDrawing;
 			poly.Color = color;

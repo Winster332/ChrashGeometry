@@ -8,6 +8,7 @@ namespace CrashGeometry.GameEngine
 {
 	public class Graphics
 	{
+		public Camera Camera { get; set; }
 		private System.Windows.Forms.PictureBox pBox;
 		private System.Drawing.Image image;
 		private System.Drawing.Graphics graphics;
@@ -22,6 +23,8 @@ namespace CrashGeometry.GameEngine
 			this.graphics = System.Drawing.Graphics.FromImage(image);
 			this.graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 			form.Controls.Add(pBox);
+
+			this.Camera = new Camera();
 		}
 		public void Begin(System.Drawing.Color color)
 		{

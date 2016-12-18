@@ -36,8 +36,19 @@ namespace CrashGeometry.Views
 		{
 			if (Game.Input.PoolMouse.Moves.Count > 0)
 			{
-				var mouseX = Game.Input.PoolMouse.GetLastMove().X;
-				var mouseY = Game.Input.PoolMouse.GetLastMove().Y;
+				float mouseX = 0; 
+				float mouseY = 0;
+
+				if (!IsEnableCamera)
+				{
+					mouseX = Game.Input.PoolMouse.GetLastMove().X;
+					mouseY = Game.Input.PoolMouse.GetLastMove().Y;
+				}
+				else
+				{
+					mouseX = Game.Input.PoolMouse.GetLastMove().X + Game.Graphics.Camera.X;
+					mouseY = Game.Input.PoolMouse.GetLastMove().Y + Game.Graphics.Camera.X;
+				}
 
 				if (mouseX >= X - Width / 2 && mouseX <= X + Width / 2 &&
 					mouseY >= Y - Height / 2 && mouseY <= Y + Height / 2)

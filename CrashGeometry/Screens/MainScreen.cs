@@ -26,7 +26,7 @@ namespace CrashGeometry.Screens
 			text.Position = new LMDMono2D.Dot(100, 100);
 			AddView(text);
 
-			Polygon poly = Polygon.Create(new LMDMono2D.Dot[]
+			Polygon poly = Polygon.Create(Game, new LMDMono2D.Dot[]
 				{
 					new LMDMono2D.Dot(100, 100),
 					new LMDMono2D.Dot(200, 100),
@@ -39,7 +39,7 @@ namespace CrashGeometry.Screens
 			});
 			AddView(poly);
 
-			AddView(Circle.Create(400, 100, 30, Color.White).AddListenerClick(view =>
+			AddView(Circle.Create(Game, 400, 100, 30, Color.White).AddListenerClick(view =>
 			{
 				Console.WriteLine("Click on circle");
 			}));

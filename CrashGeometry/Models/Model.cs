@@ -21,6 +21,7 @@ namespace CrashGeometry.Models
 			TypeDrawing = TypeDrawing.Fills;
 			Color = System.Drawing.Color.White;
 			SizeLine = 1;
+			IsEnableCamera = true;
 		}
 		protected abstract override void Loaded();
 		public abstract override void Draw();

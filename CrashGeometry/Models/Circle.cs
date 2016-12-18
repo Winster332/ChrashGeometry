@@ -40,9 +40,10 @@ namespace CrashGeometry.Models
 		{
 			pen.Dispose();
 		}
-		public static Circle Create(float x, float y, float radius, Color color, TypeDrawing type = TypeDrawing.Fills, int sizeLine = 1)
+		public static Circle Create(GameEngine.Game game, float x, float y, float radius, Color color, TypeDrawing type = TypeDrawing.Fills, int sizeLine = 1)
 		{
 			Circle c = new Circle();
+			c.Initialize(game);
 			c.X = x;
 			c.Y = y;
 			c.Radius = radius;

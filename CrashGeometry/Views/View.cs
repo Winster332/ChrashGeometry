@@ -11,6 +11,7 @@ namespace CrashGeometry.Views
 {
 	public abstract class View : IDisposable
 	{
+		public bool IsEnableCamera { get; set; }
 		protected Game Game { get; set; }
 		protected List<Action<View>> Clicks;
 		public View AddListenerClick(Action<View> eventClick)
@@ -30,8 +31,10 @@ namespace CrashGeometry.Views
 			}
 			set
 			{
-				Position.X = value;
-			}
+				if (IsEnableCamera)
+					Position.X = value + Game.Graphics.Camera.X;
+				else Position.X = value;
+            }
 		}
 		public float Y
 		{
@@ -41,12 +44,15 @@ namespace CrashGeometry.Views
 			}
 			set
 			{
-				Position.Y = value;
+				if (IsEnableCamera)
+					Position.Y = value + Game.Graphics.Camera.Y;
+				else Position.Y = value;
 			}
 		}
 		public Dot Position { get; set; }
 		public View()
 		{
+			IsEnableCamera = false;
 			Position = new Dot(0, 0);
 			Clicks = new List<Action<View>>();
 		}
