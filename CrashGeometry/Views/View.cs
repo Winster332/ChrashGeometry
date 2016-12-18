@@ -13,9 +13,10 @@ namespace CrashGeometry.Views
 	{
 		protected Game Game { get; set; }
 		protected List<Action<View>> Clicks;
-		public void AddListenerClick(Action<View> eventClick)
+		public View AddListenerClick(Action<View> eventClick)
 		{
 			this.Clicks.Add(eventClick);
+			return this;
 		}
 		public void RemoveListenerClick(int index)
 		{

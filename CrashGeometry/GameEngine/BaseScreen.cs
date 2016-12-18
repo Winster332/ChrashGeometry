@@ -30,6 +30,9 @@ namespace CrashGeometry.GameEngine
 		{
 			DrawView();
 		}
-		public abstract void Dispose();
+		public virtual void Dispose()
+		{
+			Views.Clear();
+		}
 	}
 }
