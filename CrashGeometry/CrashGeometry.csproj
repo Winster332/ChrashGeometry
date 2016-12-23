@@ -73,8 +73,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screens\Intent.cs" />
+    <Compile Include="Screens\IntentWhiteBlack.cs" />
     <Compile Include="Screens\MainScreen.cs" />
     <Compile Include="Screens\StateIntent.cs" />
+    <Compile Include="Screens\TestScreen.cs" />
     <Compile Include="Views\Button.cs" />
     <Compile Include="Views\Text.cs" />
     <Compile Include="Views\View.cs" />

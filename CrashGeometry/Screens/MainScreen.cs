@@ -14,11 +14,14 @@ namespace CrashGeometry.Screens
 	{
 		public override void Create()
 		{
+			Intent = new IntentWhiteBlack(Game);
+			
 			Button button = new Button();
 			button.Position = new LMDMono2D.Dot(Game.GetForm().Width / 2, Game.GetForm().Height / 2);
 			button.AddListenerClick(view =>
 			{
 				Console.WriteLine("Click on button");
+				Intent.Create(this, new TestScreen(), 5, 255).Start(StateIntent.RunningHide);
 			});
 			AddView(button);
 
@@ -48,6 +51,7 @@ namespace CrashGeometry.Screens
 		{
 			Game.Graphics.Begin(Color.FromArgb(50, 50, 50));
 			base.Render();
+			Intent.Draw();
 			Game.Graphics.End();
 		}
 		public override void Dispose()
