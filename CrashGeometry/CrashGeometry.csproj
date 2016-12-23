@@ -77,6 +77,8 @@
     <Compile Include="Screens\MainScreen.cs" />
     <Compile Include="Screens\StateIntent.cs" />
     <Compile Include="Screens\TestScreen.cs" />
+    <Compile Include="SystemParticle\BaseSystemParticle.cs" />
+    <Compile Include="SystemParticle\BaseParticle.cs" />
     <Compile Include="Views\Button.cs" />
     <Compile Include="Views\Text.cs" />
     <Compile Include="Views\View.cs" />
