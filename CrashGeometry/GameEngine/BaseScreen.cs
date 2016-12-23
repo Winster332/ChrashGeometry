@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CrashGeometry.Screens;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace CrashGeometry.GameEngine
 {
 	public abstract class BaseScreen : IDisposable
 	{
+		protected Intent Intent { get; set; }
 		protected List<Views.View> Views { get; set; }
 		protected Game Game { get; set; }
 		public BaseScreen()
@@ -24,7 +26,10 @@ namespace CrashGeometry.GameEngine
 			for (int i = 0; i < Views.Count; i++)
 				Views[i].Draw();
 		}
-		public void SetGame(Game game) => this.Game = game;
+		public void SetGame(Game game)
+		{
+			this.Game = game;
+		}
 		public abstract void Create();
 		public virtual void Render()
 		{
