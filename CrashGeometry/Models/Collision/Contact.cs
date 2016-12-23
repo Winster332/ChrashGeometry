@@ -24,5 +24,22 @@ namespace CrashGeometry.Models.Collision
 		{
 			this.IsCollision = false;
 		}
+		public override string ToString()
+		{
+			string info = "";
+			info += "IsCollision: " + IsCollision;
+			if (Position != null)
+				info += "\nPosition: " + Position.ToString();
+			else info += "\nPosition: null";
+			if (Model1 != null)
+				info += "\nModel1: " + Model1.ToString();
+			else info += "\nModel1: null";
+			if (Model2 != null)
+				info += "\nModel2: " + Model2.ToString();
+			else info += "\nModel2: null";
+
+
+			return info;
+		}
 	}
 }

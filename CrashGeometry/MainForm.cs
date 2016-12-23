@@ -23,13 +23,13 @@ namespace CrashGeometry
 			timer.Interval = 30;
 			timer.Tick += Timer_Tick;
 		}
-		private void MainForm_Load(object sender, EventArgs e)
+		public void MainForm_Load(object sender, EventArgs e)
 		{
 			game = new Game(this);
 			game.SetScreen(new Screens.MainScreen());
 			timer.Start();
 		}
-		private void Timer_Tick(object sender, EventArgs e)
+		public void Timer_Tick(object sender, EventArgs e)
 		{
 			game.Update();
 		}

@@ -29,6 +29,19 @@ namespace CrashGeometry.Models.Collision
 		{
 			Contact contact = new Contact();
 
+			for (int i = 0, j = 1; i < m1.Verteces.Length; j = i++)
+			{
+				Dot point = m1.Verteces[i];
+
+				if (DotMath.IsDotInPolygon(m2.Verteces, point))
+				{
+					contact.IsCollision = true;
+					contact.Model1 = m1;
+					contact.Model2 = m2;
+					contact.Position = m1.Position;
+				}
+			}
+
 			return contact;
 		}
 		public static Contact IsCollisionCircles(Circle m1, Circle m2)
@@ -53,13 +66,14 @@ namespace CrashGeometry.Models.Collision
 		{
 			Contact contact = new Contact();
 
-			for (int i = 0; i < m1.Verteces.Length; i++)
+			for (int i = 0, j = 1; i < m1.Verteces.Length; j=i++)
 			{
-				Dot point = m1.Verteces[i];
+				Dot point1 = m1.Verteces[i];
+				Dot point2 = m1.Verteces[j];
 
-				if (DotMath.IsDotInPolygon(m2.Verteces, point))
+				if (DotMath.IsDotInPolygon(m2.Verteces, point1))
 				{
-					Dot positionContact = GetPositionContact(point, m2);
+					Dot positionContact = GetPositionContact(point1, point2, m2);
 
 					contact.IsCollision = true;
 					contact.Model1 = m1;
@@ -71,7 +85,7 @@ namespace CrashGeometry.Models.Collision
 			return contact;
 		}
 
-		public static Dot GetPositionContact(Dot point, Polygon m2)
+		public static Dot GetPositionContact(Dot point1, Dot point2, Polygon m2)
 		{
 			Dot position = new Dot(0, 0);
 			Dot centerModel2 = DotMath.PolygonCenter(m2.Verteces);
@@ -81,9 +95,14 @@ namespace CrashGeometry.Models.Collision
 				Dot A = m2.Verteces[i];
 				Dot B = m2.Verteces[j];
 
-				Dot contact = DotMath.StraightsIntersect(A, B, point, centerModel2);
+				Dot contact = DotMath.StraightsIntersect(A, B, point1, point2);
+				//Console.WriteLine("line1: A[" + A.ToString() + "] B[" + B.ToString() + "]");
+				//Console.WriteLine("line2: A[" + point1.ToString() + "] B[" + point2 + "]");
+
 				if (contact != null)
+				{
 					position = contact;
+				}
 			}
 
 			return position;

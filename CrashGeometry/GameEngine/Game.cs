@@ -29,6 +29,10 @@ namespace CrashGeometry.GameEngine
 			screen.Create();
 			this.activeScreen = screen;
 		}
+		public BaseScreen GetScreen()
+		{
+			return activeScreen;
+		}
 		public System.Windows.Forms.Form GetForm()
 		{
 			return form;
