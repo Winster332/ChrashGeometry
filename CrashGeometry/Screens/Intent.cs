@@ -15,12 +15,14 @@ namespace CrashGeometry.Screens
 		public float Velocity { get; set; }
 		public float CurrentValue { get; set; }
 		public float StartValue { get; set; }
+		public bool IsIntent;
 		protected GameEngine.Game game { get; set; }
 		public Intent(GameEngine.Game game)
 		{
 			State = StateIntent.Initialized;
 			this.game = game;
 			Velocity = 0.0f;
+			IsIntent = true;
 		}
 		public Intent Create(BaseScreen s1, BaseScreen s2, float velocity, float startValue)
 		{
@@ -28,15 +30,18 @@ namespace CrashGeometry.Screens
 			this.screen2 = s2;
 			this.Velocity = velocity;
 			this.StartValue = startValue;
+			this.CurrentValue = startValue;
 			return this;
 		}
 		public void UseIntent()
 		{
-			game.SetScreen(screen2);
+			if (IsIntent)
+				game.SetScreen(screen2);
 		}
 		public abstract void Draw();
-		public void Start(StateIntent state)
+		public void Start(StateIntent state, bool isIntent)
 		{
+			this.IsIntent = isIntent;
 			State = state;
 		}
 

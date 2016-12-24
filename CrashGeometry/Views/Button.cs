@@ -19,6 +19,7 @@ namespace CrashGeometry.Views
 		public System.Drawing.StringFormat StringFormat;
 		public Button()
 		{
+			Text = Text.Create("Button", X, Y, new System.Drawing.Font("Arial", 11), Color.White);
 			X = 0;
 			Y = 0;
 			Width = 80;
@@ -98,7 +99,6 @@ namespace CrashGeometry.Views
 
 		protected override void Loaded()
 		{
-			Text = Text.Create("Button", X, Y, new System.Drawing.Font("Arial", 11), Color.White);
 			Text.Initialize(Game);
 		}
 	}

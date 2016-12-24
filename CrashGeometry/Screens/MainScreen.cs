@@ -15,37 +15,39 @@ namespace CrashGeometry.Screens
 		public override void Create()
 		{
 			Intent = new IntentWhiteBlack(Game);
-			
-			Button button = new Button();
-			button.Position = new LMDMono2D.Dot(Game.GetForm().Width / 2, Game.GetForm().Height / 2);
-			button.AddListenerClick(view =>
+		
+			AddView(Button.Create("Начать", Game.GetForm().Width / 2, Game.GetForm().Height / 2-35, 100, 30, Color.FromArgb(60, 140, 210), Color.FromArgb(255, 255, 255), new System.Drawing.Font("Arial", 12)).AddListenerClick(view =>
 			{
-				Console.WriteLine("Click on button");
-				Intent.Create(this, new TestScreen(), 5, 255).Start(StateIntent.RunningHide);
-			});
-			AddView(button);
-			
-			Text text = new Text();
-			text.Position = new LMDMono2D.Dot(100, 100);
-			AddView(text);
-
-			Polygon poly = Polygon.Create(Game, new LMDMono2D.Dot[]
-				{
-					new LMDMono2D.Dot(100, 100),
-					new LMDMono2D.Dot(200, 100),
-					new LMDMono2D.Dot(200, 200),
-					new LMDMono2D.Dot(100, 200)
-				}, TypeDrawing.Fills, Color.White);
-			poly.AddListenerClick(view => 
-			{
-				Console.WriteLine("Click on polygon");
-			});
-			AddView(poly);
-
-			AddView(Circle.Create(Game, 400, 100, 30, Color.White).AddListenerClick(view =>
-			{
-				Console.WriteLine("Click on circle");
+				Intent.Create(this, new WorkspaceScreen(), 5, 0).Start(StateIntent.RunningHide, true);
 			}));
+			AddView(Button.Create("Выход", Game.GetForm().Width / 2, Game.GetForm().Height / 2, 100, 30, Color.FromArgb(60, 140, 210), Color.FromArgb(255, 255, 255), new System.Drawing.Font("Arial", 12)).AddListenerClick(view =>
+			{
+				System.Windows.Forms.Application.Exit();
+			}));
+
+			AddView(Text.Create("Crash Geometry", Game.GetForm().Width / 2, Game.GetForm().Height / 2 - 125, new System.Drawing.Font("Arial", 20), Color.White));
+
+			//Text text = new Text();
+			//text.Position = new LMDMono2D.Dot(100, 100);
+			//AddView(text);
+
+			//Polygon poly = Polygon.Create(Game, new LMDMono2D.Dot[]
+			//	{
+			//		new LMDMono2D.Dot(100, 100),
+			//		new LMDMono2D.Dot(200, 100),
+			//		new LMDMono2D.Dot(200, 200),
+			//		new LMDMono2D.Dot(100, 200)
+			//	}, TypeDrawing.Fills, Color.White);
+			//poly.AddListenerClick(view => 
+			//{
+			//	Console.WriteLine("Click on polygon");
+			//});
+			//AddView(poly);
+
+			//AddView(Circle.Create(Game, 400, 100, 30, Color.White).AddListenerClick(view =>
+			//{
+			//	Console.WriteLine("Click on circle");
+			//}));
 		}
 		public override void Render()
 		{

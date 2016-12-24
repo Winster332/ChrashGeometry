@@ -39,6 +39,7 @@ namespace CrashGeometry.Views
 			t.Color = color;
 			t.Position = new LMDMono2D.Dot(x, y);
 			t.Font = font;
+			t.Value = text;
 
 			return t;
 		}

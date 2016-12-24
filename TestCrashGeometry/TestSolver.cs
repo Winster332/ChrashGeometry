@@ -8,7 +8,7 @@ using System.Drawing;
 namespace TestCrashGeometry
 {
 	[TestClass]
-	public class TestSolver
+	public class TestSolver :  IDisposable
 	{
 		private CrashGeometry.GameEngine.Game game;
 		private CrashGeometry.MainForm form;
@@ -108,6 +108,11 @@ namespace TestCrashGeometry
 			Console.WriteLine(contact.ToString());
 
 			Assert.IsTrue(contact.IsCollision);
+		}
+
+		public void Dispose()
+		{
+			form.Dispose();
 		}
 	}
 }
