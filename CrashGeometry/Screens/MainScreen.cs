@@ -15,10 +15,11 @@ namespace CrashGeometry.Screens
 		public override void Create()
 		{
 			Intent = new IntentWhiteBlack(Game);
-		
+			Intent.Create(this, null, 15, 255).Start(StateIntent.RunningShow, false);
+
 			AddView(Button.Create("Начать", Game.GetForm().Width / 2, Game.GetForm().Height / 2-35, 100, 30, Color.FromArgb(60, 140, 210), Color.FromArgb(255, 255, 255), new System.Drawing.Font("Arial", 12)).AddListenerClick(view =>
 			{
-				Intent.Create(this, new WorkspaceScreen(), 5, 0).Start(StateIntent.RunningHide, true);
+				Intent.Create(this, new WorkspaceScreen(), 10, 0).Start(StateIntent.RunningHide, true);
 			}));
 			AddView(Button.Create("Выход", Game.GetForm().Width / 2, Game.GetForm().Height / 2, 100, 30, Color.FromArgb(60, 140, 210), Color.FromArgb(255, 255, 255), new System.Drawing.Font("Arial", 12)).AddListenerClick(view =>
 			{
