@@ -81,6 +81,7 @@
     <Compile Include="SystemParticle\BaseParticle.cs" />
     <Compile Include="SystemParticle\ParticleCircle.cs" />
     <Compile Include="SystemParticle\ParticlePolygon.cs" />
+    <Compile Include="SystemParticle\SystemParticleFire.cs" />
     <Compile Include="Views\Button.cs" />
     <Compile Include="Views\Text.cs" />
     <Compile Include="Views\View.cs" />
