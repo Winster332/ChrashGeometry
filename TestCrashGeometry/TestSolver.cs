@@ -43,7 +43,7 @@ namespace TestCrashGeometry
 
 			SimulationGameLife(5);
 
-			Contact contact = Solver.IsCollisionCircles(circle1, circle2);
+			Contact contact = new Solver().IsCollisionCircles(circle1, circle2);
 			Console.WriteLine(contact.ToString());
 
 			Assert.IsTrue(contact.IsCollision);
@@ -77,7 +77,7 @@ namespace TestCrashGeometry
 
 			SimulationGameLife(5);
 
-			Contact contact = Solver.IsCollisionPolygons(polygon1, polygon2);
+			Contact contact = new Solver().IsCollisionPolygons(polygon1, polygon2);
 			Console.WriteLine(contact.ToString());
 
 			Assert.IsTrue(contact.IsCollision);
@@ -104,7 +104,7 @@ namespace TestCrashGeometry
 
 			SimulationGameLife(5);
 
-			Contact contact = Solver.IsCollisionCircles(circle, circle);
+			Contact contact = new Solver().IsCollisionCircles(circle, circle);
 			Console.WriteLine(contact.ToString());
 
 			Assert.IsTrue(contact.IsCollision);

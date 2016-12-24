@@ -7,9 +7,26 @@ using System.Threading.Tasks;
 
 namespace CrashGeometry.Models.Collision
 {
-	public class Solver
+	public class Solver : IDisposable
 	{
-		public static Contact IsCollision(Model m1, Model m2)
+		private List<ListenerCollision> collisions;
+		public Solver()
+		{
+			collisions = new List<ListenerCollision>();
+		}
+		public void AddListenerCollision(ListenerCollision listenerCollisions)
+		{
+			collisions.Add(listenerCollisions);
+		}
+		public void RemoveListenerCollision(ListenerCollision listenerCollisions)
+		{
+			collisions.Remove(listenerCollisions);
+		}
+		public void RemoveListenerCollision(int index)
+		{
+			collisions.RemoveAt(index);
+		}
+		public Contact IsCollision(Model m1, Model m2)
 		{
 			Contact contact = new Contact();
 
@@ -25,7 +42,7 @@ namespace CrashGeometry.Models.Collision
 			return contact;
 		}
 
-		public static Contact IsCollisionCirclePolygon(Circle m1, Polygon m2)
+		public Contact IsCollisionCirclePolygon(Circle m1, Polygon m2)
 		{
 			Contact contact = new Contact();
 
@@ -39,12 +56,14 @@ namespace CrashGeometry.Models.Collision
 					contact.Model1 = m1;
 					contact.Model2 = m2;
 					contact.Position = m1.Position;
+
+					GenerateListenerCollision(contact);
 				}
 			}
 
 			return contact;
 		}
-		public static Contact IsCollisionCircles(Circle m1, Circle m2)
+		public Contact IsCollisionCircles(Circle m1, Circle m2)
 		{
 			Contact contact = new Contact();
 			float distance = DotMath.Distance(m1.Position, m2.Position);
@@ -58,11 +77,13 @@ namespace CrashGeometry.Models.Collision
 				contact.Model1 = m1;
 				contact.Model2 = m2;
 				contact.Position = position;
+
+				GenerateListenerCollision(contact);
 			}
 
 			return contact;
 		}
-		public static Contact IsCollisionPolygons(Polygon m1, Polygon m2)
+		public Contact IsCollisionPolygons(Polygon m1, Polygon m2)
 		{
 			Contact contact = new Contact();
 
@@ -79,6 +100,8 @@ namespace CrashGeometry.Models.Collision
 					contact.Model1 = m1;
 					contact.Model2 = m2;
 					contact.Position = positionContact;
+
+					GenerateListenerCollision(contact);
 				}
 			}
 
@@ -106,6 +129,19 @@ namespace CrashGeometry.Models.Collision
 			}
 
 			return position;
+		}
+
+		private void GenerateListenerCollision(Contact contact)
+		{
+			collisions.ForEach(c =>
+			{
+				c.Collision(contact);
+			});
+		}
+
+		public void Dispose()
+		{
+			collisions.Clear();
 		}
 	}
 }

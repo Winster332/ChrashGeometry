@@ -66,6 +66,7 @@
     <Compile Include="GameEngine\Input.cs" />
     <Compile Include="Models\Circle.cs" />
     <Compile Include="Models\Collision\Contact.cs" />
+    <Compile Include="Models\Collision\ListenerCollision.cs" />
     <Compile Include="Models\Collision\Solver.cs" />
     <Compile Include="Models\Model.cs" />
     <Compile Include="Models\Polygon.cs" />

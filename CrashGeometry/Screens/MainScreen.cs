@@ -24,7 +24,7 @@ namespace CrashGeometry.Screens
 				Intent.Create(this, new TestScreen(), 5, 255).Start(StateIntent.RunningHide);
 			});
 			AddView(button);
-
+			
 			Text text = new Text();
 			text.Position = new LMDMono2D.Dot(100, 100);
 			AddView(text);
